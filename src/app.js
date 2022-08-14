@@ -3,6 +3,7 @@ const app = express();
 const router = express.Router();
 const cors = require('cors');
 
+const routes =  require('./routes/index.routes');
 
 app.use(cors());
 
@@ -15,5 +16,6 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use('/api',routes)
  
 module.exports = app;
