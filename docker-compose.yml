@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  server:
+    build: ./src
+    command: npm run dev
+    ports:
+      - '${PORT}:3000'
+    volumes:
+      - ./src:/home/node/app
+    env_file:
+      - .env
