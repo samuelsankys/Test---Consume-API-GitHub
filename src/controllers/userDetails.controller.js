@@ -21,7 +21,7 @@ module.exports = async (req, res)=> {
             }).catch((error)=>{
                 console.log(error);
             })
-        return res.send('nao encontrado');
+        
 
     } catch (error) {
         return res.status(500).json(error);
