@@ -6,6 +6,7 @@ module.exports = async (req, res)=> {
     try {
         const { since } = req.query;
 
+
         let url = 'https://api.github.com/users'
         
         if(since){
@@ -23,9 +24,12 @@ module.exports = async (req, res)=> {
                     nextPage : nextPage,
                     users : response.data
                 }
-
-                return res.send(out);
+                
+                return res.status(200).send(out);
             }).catch((error)=>{
+                if(error.response.statusText == 'rate limit exceeded'){
+                    return res.status(403).json(error)
+                }
                 console.log(error);
             })
 
