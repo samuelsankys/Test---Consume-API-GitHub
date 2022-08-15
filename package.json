@@ -4,8 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node config/server.js",
-    "dev": "nodemon config/server.js",
+    "start": "node src/config/server.js",
+    "dev": "nodemon src/config/server.js",
     "test": "jest"
   },
   "repository": {
