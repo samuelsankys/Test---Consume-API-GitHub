@@ -12,14 +12,17 @@ module.exports = async (req, res)=> {
             .then((response)=>{        
 
                 let out = {
-                    userDetail : response.data
+                    userDetails : response.data
                 }
 
-                return res.send(out);
+                return res.status(200).json(out);
             }).catch((error)=>{
-                console.log(error);
+                if(error.code === 'ERR_BAD_REQUEST'){
+                    return res.status(404).json({message:'User not found'});
+                }
+                return res.status(500).json(error);
             })
-        return res.send('nao encontrado');
+        
 
     } catch (error) {
         return res.status(500).json(error);
